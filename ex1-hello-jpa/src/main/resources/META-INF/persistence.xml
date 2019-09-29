@@ -8,7 +8,8 @@
             <property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>
             <property name="javax.persistence.jdbc.user" value="sa"/>
             <property name="javax.persistence.jdbc.password" value=""/>
-            <property name="javax.persistence.jdbc.url" value="jdbc:h2:tcp://localhost/~/test"/>    <!-- 경로설정 -->
+            <property name="javax.persistence.jdbc.url" value="jdbc:h2:tcp://localhost/~"/>    <!-- 경로설정 -->
+
             <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/> <!-- H2Dialect!. 디비 종속적이지 않도록 JPA가 알아서 해석해준다. -->
             <!-- 옵션 -->
             <property name="hibernate.show_sql" value="true"/>

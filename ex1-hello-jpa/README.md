@@ -116,8 +116,69 @@ name 참조가 hibernate.~~ 로 되어 있는것은 하이버네이트 전용 �
 ---
 ### JPA 애플리케이션 개발
 
-JPA 구동방식
+JPA 기본 구동방식
 persistence 객체가 /META-INF/persistence.xml을 조회하고
 조회에 맞춰 EntityManagerFactory를 생성함.
 EntityManagerFactory로 부터 EntityManager를 생성해, 한 트랜잭션당 하나의 엔티티 매니저를 갖도록 코딩한다.
+
+
+**객체와 테이블 매핑하기**
+객체에 @Entity, @Id 등 persistence관련 어노테이션을 사용해 객체와 매핑해준다
+- @Entity : 해당 객체가 JPA가 관리할 객체라는 것을 말해줌. 테이블과 이름이 같으면 그대로, 다르다면 name="테이블명"을 준다. 필수 항목
+- @Id : 해당 객체에서 PK로 사용하는 것에 Id값을 준다. 컬럼명과 다르면 name="컬럼명" 을 줌
+
+```java
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity //필수
+public class Member {
+
+    @Id
+    private long id;
+
+    private String name;
+
+    //getter, setter...
+}
+```
+
+이렇게 생성한 entity를 JPA가 사용할 수 있도록 테스트 코드 작성해봄.
+JPA 사용시, 불러오는 클래스는 EntityManagerFactory, EntityManager, EntityTransaction등이 있음.
+```java
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+import javax.persistence.Persistence;
+
+public class JpaMain {
+
+    // EntityManagerFactory는 어플리케이션에 1개만 있으면 되고,
+    // 이후 JPA사용시, 트랜잭션마다 entityManager를 만들어 실행한다 
+    // EntityManager는 db 트랜잭션 이라고 생각할 수 있음.
+    EntityManagerFactory emf = Persistence.createEntityManagerFactory("hello"); //persistence.xml 에 있는 persistence-unit 명을 입력
+
+    EntityManager em = emf.createEntityManager(); //
+
+    EntityTransaction tx = em.getTransaction(); //EntityManager로 부터 트랜잭션을 호출해서 사용함.
+
+    tx.begin();  //트랜잭션 시작
+
+    //  to do something...
+
+    tx.commit(); //or tx.rollback()  트랜잭션 종료
+
+    em.close();  // entityManager() 종료
+
+    emf.close(); // EntityManagerFactory() 종료
+
+}
+
+```
+
+**기본적인 crud 메소드**
+1. 등록: entityManager.persist(// 엔티티)
+2. 조회: entityManager.find(//엔티티, //조회조건)
+3. 삭제: entityManager.remove(//조건);
+4. 수정: ⭐entity.set~~(//변경어)
 

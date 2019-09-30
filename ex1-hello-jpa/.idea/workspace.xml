@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="e89d5970-09f8-459a-87bb-aff360a26b5a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hellojpa/Member.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hellojpa/Member.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -95,7 +96,7 @@
       <option name="presentableId" value="Default" />
       <updated>1569673597074</updated>
       <workItem from="1569673603222" duration="1701000" />
-      <workItem from="1569676087045" duration="8420000" />
+      <workItem from="1569676087045" duration="9255000" />
     </task>
     <servers />
   </component>

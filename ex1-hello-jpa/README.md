@@ -7,6 +7,7 @@
 - JPA 클래스 사용해보기
 
 ---
+
 ### H2 데이터베이스 설치 및 실행.
 
 h2데이터베이스 파일을 다운로드 받아 설치 후, 아래 경로의 파일 실행
@@ -96,13 +97,16 @@ JPA표준속성 : javax.persistence의 패키지에 존재
 ```
 
 위의 persistence.xml파일에 작성된 property를 살펴보면,
+
 name 참조가 javax.persistence.~~ 로 되어있는건 JPA 표준을 참조하고 있는것.
-    ex. jdbc.driver, user, password, url 등
+- ex. jdbc.driver, user, password, url 등
+
 name 참조가 hibernate.~~ 로 되어 있는것은 하이버네이트 전용 속성이다.
-    - dialect.H2Dialect : db에 종속적이지 않도록 설정하는것. 쿼리 수행시 h2에서 종속적인 표현들을 알아서 해석해줘, 사용자가 신경쓰지 않도록 함
-    - show_sql : 실행되는 sql을 콘솔에 출력할 지 보여주는 여부
-    - format_sql : sql이 읽기 쉽도록 포맷해 줌.
-    - use_sql_comments : sql이 어디에서 실행 되었는지를 알려줌.
+- dialect.H2Dialect : db에 종속적이지 않도록 설정하는것. 쿼리 수행시 h2에서 종속적인 표현들을 알아서 해석해줘, 사용자가 신경쓰지 않도록 함
+- show_sql : 실행되는 sql을 콘솔에 출력할 지 보여주는 여부
+- format_sql : sql이 읽기 쉽도록 포맷해 줌.
+- use_sql_comments : sql이 어디에서 실행 되었는지를 알려줌.
+
 
 **DB 방언**
 각각 데이터베이스가 제공하는 sql 중 표준과 조금씩 다른 sql을 말함.
@@ -110,10 +114,12 @@ name 참조가 hibernate.~~ 로 되어 있는것은 하이버네이트 전용 �
  - 함수(문자열자르기) : SUBSTRING() (표준), SUBSTR() (Oracle)
  - 페이징 : LIMIT(MySQL), ROWNUM(Oracle) 등
 
+
 해당 방언을 persistence.xml 프로퍼티 중 dialect부분에 어떤 db를 사용해주는지 명시해주면, 해당 db에 맞도록 JPA가 알아서 쿼리를 작성한다. 
 -> 플랫폼 변경해도 사용하기가 쉽다.
 
 ---
+
 ### JPA 애플리케이션 개발
 
 JPA 기본 구동방식

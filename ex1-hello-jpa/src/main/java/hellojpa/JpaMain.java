@@ -4,48 +4,32 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
+import javax.transaction.TransactionManager;
 
 public class JpaMain {
     public static void main(String[] args) {
-        // EntityManagerFactory 는 어플리케이션에서 1개만
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("hello");
+        EntityManager em =emf.createEntityManager();
+        EntityTransaction tx = em.getTransaction();
 
-        // 트랜젝션 마다  EntityManager는 만들어 줘야함. -> 쉽게 생각하면 db 커넥션 하나 받았다고 생각하면 돰.
-        EntityManager entityManager = emf.createEntityManager();
-        //code를 이 부분에 구현하게 됨.
+        tx.begin();
+        System.out.println("=========BEGIN=========");
+        //비영속
+        Member member = new Member();
+        member.setId(100L);
+        member.setName("Peter");
 
-        EntityTransaction entityTransaction = entityManager.getTransaction();
-        entityTransaction.begin();
+        //영속상태
+        System.out.println("Persiste BEFORE");
+        em.persist(member);     //영속성 컨텍스트에 들어가면서 영속 상태가 됨. -> 1차 캐시에 저장됨
+        System.out.println("Persiste AFTER");
 
-        try {
-            //1.등록
-/*
-            Member member = new Member();
-            member.setId(2L);
-            member.setName("helloB");
+        em.find(Member.class,100L); //-> 1차 캐시에서 조회함
+        //준영속 - 엔티티에서 분리
+        em.detach(member);
+        tx.commit();    //이 때 커밋으로 넘어감
+        System.out.println("=========END=========");
 
-            entityManager.persist(member);
-*/
-            //2. 조회
-            Member findMember = entityManager.find(Member.class, 1L);
 
-            System.out.println("findMember.id = " + findMember.getId() );
-            System.out.println("findMember.name = " + findMember.getName() );
-
-            //3. 삭제
-            //entityManager.remove(1L);
-
-            //4. 수정 - em.persist()로 저장 안해도 저장됨.
-            // 자바 객체에서 값만 바꿔도 수정이 됨.
-            findMember.setName("hello JPA");
-
-          entityTransaction.commit();
-        } catch (Exception e) {
-            entityTransaction.rollback();
-        } finally {
-            entityManager.close();
-        }
-
-        emf.close();
     }
 }

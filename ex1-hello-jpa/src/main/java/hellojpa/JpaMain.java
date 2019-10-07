@@ -23,8 +23,6 @@ public class JpaMain {
 
         member = em.find(Member.class,100L); //-> 1차 캐시에서 조회함
 
-        System.out.println("findMember.id = " + member.getId());
-        System.out.println("findMember.name = " + member.getName());
         //준영속 - 엔티티에서 분리
         //em.detach(member);
 
@@ -51,7 +49,8 @@ public class JpaMain {
         System.out.println("=====================");
 
         tx.commit();    //이 때 커밋으로 넘어감
-
+        em.close();
+        emf.close();    //스키 자동생성이 create-drop일 떄, 드롭이 이거 수행 후 이뤄짐.
         System.out.println("=========END=========");
 
 

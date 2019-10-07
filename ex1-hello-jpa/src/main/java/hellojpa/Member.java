@@ -2,13 +2,15 @@ package hellojpa;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
-@Entity //필수
+@Entity (name ="Member")//필수
 public class Member {
 
     @Id
     private long id;
     private String name;
+    private int age2;
 
     //JPA에서 생성자 선언으로 할때, 기본 생성자가 반드시 있어야 함.
     public Member() {

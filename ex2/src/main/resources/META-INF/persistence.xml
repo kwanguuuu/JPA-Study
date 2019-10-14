@@ -17,7 +17,7 @@
             <property name="hibernate.use_sql_comments" value="true"/>
             <property name="hibernate.hbm2ddl.auto" value="create" />
             <!--            <property name="hibernate.hbm2ddl.auto" value="drop" />-->
-            <!--            <property name="hibernate.hbm2ddl.auto" value="create-drop" /> -->
+<!--                        <property name="hibernate.hbm2ddl.auto" value="create-drop" />-->
             <!--            <property name="hibernate.hbm2ddl.auto" value="update" />-->
             <!--            <property name="hibernate.hbm2ddl.auto" value="validate" />-->
             <!--            <property name="hibernate.hbm2ddl.auto" value="none" />-->

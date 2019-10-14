@@ -2,11 +2,11 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity(name = "MEMBER")
-@SequenceGenerator(name = "member_seq_generator", sequenceName = "member_seq")
+@SequenceGenerator(name = "member_seq_generator", sequenceName = "member_seq", allocationSize = 50)
 public class Member {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "member_seq_generator") //db방언에 맞춰서 자동 생성됨
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "member_seq_generator"  ) //db방언에 맞춰서 자동 생성됨
     private int id;
 
     private String username;

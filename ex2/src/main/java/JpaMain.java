@@ -11,28 +11,25 @@ public class JpaMain {
 
         tx.begin();
         try {
+
+            Team team = new Team();
+            team.setName("teamA");
+            em.persist(team);
+
             Member member = new Member();
-            member.setUsername("peter");
-            Member member2 = new Member();
-            member2.setUsername("peter2");
-            Member member3 = new Member();
-            member3.setUsername("peter3");
-
-            System.out.println("==============");
+            member.setUsername("member1");
+            member.setTeamId(team.getId()); //애매하다
             em.persist(member);
-            em.persist(member2);
-            em.persist(member3);
 
-//            System.out.println(member.getId());
-            System.out.println(member.getUsername());
-            System.out.println(member2.getUsername());
-            System.out.println(member3.getUsername());
-            System.out.println("==============");
-            tx.commit();    //이 때 커밋으로 넘어감
+            Member findMember = em.find(Member.class, member.getId());
+            Long findTeamId = findMember.getTeamId();
+            em.find(Team.class, findTeamId);
+
+            //별로 객체지향적이지 못하다.
+
+            tx.commit();
+
         } catch (Exception e) {
-            tx.rollback();
-        } finally {
-            em.close();
 
         }
 

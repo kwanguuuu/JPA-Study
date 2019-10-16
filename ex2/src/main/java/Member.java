@@ -2,28 +2,23 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity(name = "MEMBER")
-@SequenceGenerator(name = "member_seq_generator", sequenceName = "member_seq", allocationSize = 50)
 public class Member {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "member_seq_generator"  ) //db방언에 맞춰서 자동 생성됨
-    private int id;
+    @Id @GeneratedValue
+    @Column(name="MEMBER_ID")
+    private Long id;
 
+    @Column(name = "USERNAME")
     private String username;
 
-    public Member() {
-    }
+    @Column(name = "TEAM_ID")
+    private Long teamId;
 
-    public Member(int id, String username) {
-        this.id = id;
-        this.username = username;
-    }
-
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -33,5 +28,13 @@ public class Member {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public Long getTeamId() {
+        return teamId;
+    }
+
+    public void setTeamId(Long teamId) {
+        this.teamId = teamId;
     }
 }

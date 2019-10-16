@@ -18,11 +18,11 @@ public class JpaMain {
 
             Member member = new Member();
             member.setUsername("member1");
-            member.setTeamId(team.getId()); //애매하다
+//            member.setTeamId(team.getId()); //애매하다
             em.persist(member);
 
             Member findMember = em.find(Member.class, member.getId());
-            Long findTeamId = findMember.getTeamId();
+//            Long findTeamId = findMember.getTeamId();
             em.find(Team.class, findTeamId);
 
             //별로 객체지향적이지 못하다.

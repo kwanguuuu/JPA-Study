@@ -17,16 +17,12 @@ public class JpaMain {
             em.persist(team);
 
             Member member = new Member();
-            member.setUsername("member1");
-//            member.setTeamId(team.getId()); //애매하다
+            member.setName("teamB");
+            member.setTeam(team);
             em.persist(member);
 
             Member findMember = em.find(Member.class, member.getId());
-//            Long findTeamId = findMember.getTeamId();
-            em.find(Team.class, findTeamId);
-
-            //별로 객체지향적이지 못하다.
-
+            System.out.println(findTeam);
             tx.commit();
 
         } catch (Exception e) {

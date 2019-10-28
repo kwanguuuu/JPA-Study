@@ -1,23 +1,20 @@
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
-public  class Team {
+public class Team {
+    @Id @GeneratedValue
+    private long id;
 
-    @Id
-    @GeneratedValue
-    @Column(name = "TEAM_ID")
-    private Long Id;
     private String name;
 
-    public Long getId() {
-        return Id;
+    public long getId() {
+        return id;
     }
 
-    public void setId(Long id) {
-        Id = id;
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getName() {

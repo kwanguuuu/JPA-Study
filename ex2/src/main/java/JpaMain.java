@@ -22,7 +22,8 @@ public class JpaMain {
             member.setTeam(team);
             em.persist(member);
 
-            team.getMembers().add(member);      //이 라인의 의미가 중요함 ***
+//            team.getMembers().add(member);      //이 라인의 의미가 중요함 *** 양쪽에 값을 설정
+                                                // -> 연관관계 편의 메소드 생성해보자
             em.flush();
             em.clear();
             //member의 team이 어노테이션 JoinColumn 으로 조회될 수 있음.

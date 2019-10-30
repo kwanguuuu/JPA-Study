@@ -6,11 +6,10 @@ public class Member {
 
     @Id @GeneratedValue
     private long id;
+
     @Column(name = "user_name")
     private String name;
-
-//    @Column(name ="TEAM_ID")
-//    private long teamId;          객체지향적 모델링이 아님
+    private int age;
 
     @ManyToOne
     @JoinColumn(name = "TEAM_ID")
@@ -30,6 +29,14 @@ public class Member {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
     }
 
     public Team getTeam() {

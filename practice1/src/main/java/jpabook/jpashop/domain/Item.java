@@ -9,16 +9,17 @@ import javax.persistence.Id;
 public class Item {
     @Id @GeneratedValue
     @Column(name = "ITEM_ID")
-    private Long id;
+    private long id;
+
     private String name;
     private int price;
     private int stockQuantity;
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 

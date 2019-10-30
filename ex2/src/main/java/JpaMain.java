@@ -19,7 +19,7 @@ public class JpaMain {
 
             Member member = new Member();
             member.setName("memberA");
-            member.setTeam(team);
+            member.changeTeam(team);
             em.persist(member);
 
 //            team.getMembers().add(member);      //이 라인의 의미가 중요함 *** 양쪽에 값을 설정

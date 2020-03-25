@@ -24,6 +24,7 @@ public class JpaMain {
 
 //            team.getMembers().add(member);      //이 라인의 의미가 중요함 *** 양쪽에 값을 설정
                                                 // -> 연관관계 편의 메소드 생성해보자
+                                                //연관관계 편의 메소드는 주의 할 필요가 있음.
             em.flush();
             em.clear();
             //member의 team이 어노테이션 JoinColumn 으로 조회될 수 있음.
@@ -35,6 +36,7 @@ public class JpaMain {
 
             //왜 안가져올까.. -> team.getMembers().add(member) 가 없을 때 안가져옴..
             List<Member> members = findTeam.getMembers();
+
             System.out.println("===============================");
             for (Member m: members) {
                 System.out.println("m = " + m.getName());

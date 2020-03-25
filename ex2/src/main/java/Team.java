@@ -8,7 +8,7 @@ public class Team {
     private long id;
 
     private String name;
-
+ w
     @OneToMany(mappedBy = "team")
     private List<Member> members = new ArrayList<>();
 
@@ -34,6 +34,14 @@ public class Team {
 
     public void setMembers(List<Member> members) {
         this.members = members;
+    }
 
+    @Override
+    public String toString() {
+        return "Team{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", members=" + members +
+                '}';
     }
 }

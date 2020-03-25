@@ -23,6 +23,9 @@ public class Order {
     @JoinColumn(name = "MEMBER_ID")
     private Member member;
 
+    @OneToMany(mappedBy = "order")
+    private List<OrderItem> orderItems = new ArrayList<>();
+
 //    private List<OrderItem> orderItems = new ArrayList<>();
 
 
@@ -56,5 +59,14 @@ public class Order {
 
     public void setMember(Member member) {
         this.member = member;
+    }
+
+    public List<OrderItem> getOrderItems() {
+        return orderItems;
+    }
+
+    public void addOrderItems(OrderItem orderItem) {
+        orderItems.add(orderItem);
+        orderItems.set(this);
     }
 }

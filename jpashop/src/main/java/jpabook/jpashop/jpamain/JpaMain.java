@@ -21,6 +21,11 @@ public class JpaMain {
             Long memberId = order.getMemberId();
             Member member = entityManager.find(Member.class,memberId);
 
+
+            Thread thread = new Thread();
+            thread.run();
+
+
         }finally {
             transaction.commit();
             entityManager.close();

@@ -138,7 +138,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity //필수
-public class Member {
+public class hellojpa.domain.Member {
 
     @Id
     private long id;

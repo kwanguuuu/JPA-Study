@@ -1,18 +1,22 @@
 package hellojpa.domain;
 
+import hellojpa.BaseEntity;
+import hellojpa.domain.item.Item;
+
 import javax.persistence.*;
 
 @Entity
-public class OrderItem {
-    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+public class OrderItem extends BaseEntity {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "ORDER_ITEM_ID")
     private long id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ORDER_ID")
     private Order order;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ITEM_ID")
     private Item item;
 

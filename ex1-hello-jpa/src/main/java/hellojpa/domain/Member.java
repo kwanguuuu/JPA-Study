@@ -1,11 +1,14 @@
 package hellojpa.domain;
 
+import hellojpa.BaseEntity;
+
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Member {
+public class Member extends BaseEntity {
 
     @Id
     @GeneratedValue
@@ -13,12 +16,12 @@ public class Member {
     private long id;
     private String username;
 
+    @OneToMany(mappedBy = "member")
+    private List<Order> orders = new ArrayList<>();
+
     private String city;
     private String street;
     private String zipcode;
-
-    @OneToMany(mappedBy = "member")
-    private List<Order> orders = new ArrayList<>();
 
     public Long getId() {
         return id;

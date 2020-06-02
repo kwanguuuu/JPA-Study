@@ -1,11 +1,16 @@
-package hellojpa.domain;
+package hellojpa.domain.item;
+
+import hellojpa.BaseEntity;
+import hellojpa.domain.Category;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Item {
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@DiscriminatorColumn
+public class Item extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
